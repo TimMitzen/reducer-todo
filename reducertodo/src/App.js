@@ -6,24 +6,21 @@ import "./App.css";
 import TodoTasks from "./component/TodoTasks";
 
 function App() {
-  
   const [state, dispatch] = useReducer(reducer, initialState);
 
   function handleNewTodo(item) {
-    
     dispatch({ type: "ADD_TODO", payload: item });
   }
-  
 
-  const changeItem = () =>{
-  console.log('fff')
-    dispatch({ type: "DELETE_TODO"});}
+  const changeItem = () => {
+    console.log("fff");
+    dispatch({ type: "DELETE_TODO" });
+  };
 
-  const toggle = id =>{
-    console.log(id)
-     dispatch({ type: "TOGGLE_TODO", payload: id })
-    
-    }
+  const toggle = id => {
+    console.log(id);
+    dispatch({ type: "TOGGLE_TODO", payload: id });
+  };
 
   return (
     <div className="todo-container">
