@@ -1,40 +1,40 @@
-import React ,{ useState, useReducer } from 'react';
-import Todo from './component/Todo'
-import TodoList from'./component/TodoList'
-import {todo, initialState, reducer} from './reducers/todo'
-import './App.css';
-import TodoTasks from'./component/TodoTasks'
+import React, { useReducer } from "react";
+
+import TodoList from "./component/TodoList";
+import { initialState, reducer } from "./reducers/todo";
+import "./App.css";
+import TodoTasks from "./component/TodoTasks";
 
 function App() {
+  
   const [state, dispatch] = useReducer(reducer, initialState);
-  
-  function handleNewTodo(event){
-    event.preventDefault();
-    dispatch({type: 'ADD_TODO', payload: state.item})
+
+  function handleNewTodo(item) {
     
- }
-const  handleCompleted = (event) => {
- event.preventDefault();
- dispatch({type: 'COMPLETED_TODO' })
-
-
- }
-
- const changeItem =(event) =>
-    dispatch({type: 'CHANGE_TODO', payload: event.target.value})
- 
-
-
- const toggle = id => dispatch({ type: 'TOGGLE', payload: id})
+    dispatch({ type: "ADD_TODO", payload: item });
+  }
   
+
+  const changeItem = () =>{
+  console.log('fff')
+    dispatch({ type: "DELETE_TODO"});}
+
+  const toggle = id =>{
+    console.log(id)
+     dispatch({ type: "TOGGLE_TODO", payload: id })
+    
+    }
+
   return (
     <div className="todo-container">
-    <h1>Todo App</h1>
-    <Todo />
-    <todo />
-    <TodoList todos={state.todos} toggle={toggle}/>
-    <TodoTasks />
-
+      <h1>To-do App</h1>
+      <TodoList todos={state.todos} toggle={toggle} />
+      <TodoTasks
+        item={state.item}
+        remove={changeItem}
+        add={handleNewTodo}
+        onChange={changeItem}
+      />
     </div>
   );
 }

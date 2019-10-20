@@ -1,13 +1,15 @@
-import React, { useState, useReducer } from "react";
-import { initialState, reducer } from "../reducers/todo";
-
-const TodoList = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+import React from 'react'
+import Todo from '../component/Todo'
+const TodoList = ({todos, toggle}) => {
+  
 
   return (
-    <div>
-      <input placeholder={state.item} />
-    </div>
+      <ul>
+      {todos.map(todo=>(
+         <Todo key={todo.id} {...todo} toggle={toggle}/>
+         ))}
+    </ul>
+  
   );
 };
 

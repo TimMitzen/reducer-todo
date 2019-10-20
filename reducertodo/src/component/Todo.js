@@ -1,13 +1,13 @@
 import React from 'react';
-import TodoList from './TodoList'
-const TodoForm = () => {
-
+import './Todo.css'
+const Todo = ({item, completed, toggle, id}) => {
+console.log(completed)
    return(
       <div>
+       <li className={completed ? 'cross' : ''} onClick={()=> toggle(id)}>{item}</li>
         
-        <TodoList/>
       </div>
    );
 }
 
-export default TodoForm;
+export default Todo;
